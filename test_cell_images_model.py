@@ -1,13 +1,13 @@
 from tensorflow import keras
-from keras import layers
-from keras import callbacks
 from keras.utils.image_dataset import image_dataset_from_directory
 from pathlib import Path
-import pandas as pd
 from keras.models import load_model
 import numpy as np
 import tensorflow as tf
 
+image_height = 64
+image_width = 64
+base_model_name = "fast_feature_extraction_cell_images_64"
 
 def get_features_and_labels(conv_base, dataset):
     all_features = []
@@ -27,7 +27,7 @@ def create_datasets():
 
     test_dataset = image_dataset_from_directory(
         target_dir / "test",
-        image_size=(180, 180),
+        image_size=(image_width, image_height),
         batch_size=32
     )
 
@@ -40,7 +40,7 @@ def create_feature_extractor():
     conv_base = keras.applications.vgg16.VGG16(
         weights="imagenet",
         include_top=False,
-        input_shape=(180,180,3)
+        input_shape=(image_width,image_height,3)
     )
 
     return conv_base
@@ -50,7 +50,7 @@ def test_fast_feature_extract():
     conv_base = create_feature_extractor()
     test_features, test_labels = get_features_and_labels(conv_base, test_ds)
 
-    test_model = load_model('./models/fast_feature_extraction_cell_images.keras')
+    test_model = load_model(f'./models/{base_model_name}.keras')
 
     test_loss, test_acc = test_model.evaluate(test_features, test_labels)
     print(f"From Feature Extractor Cell Images Model Test accuracy: {test_acc:.3f}")

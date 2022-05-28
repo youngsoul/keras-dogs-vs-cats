@@ -108,6 +108,7 @@ From Fast Feature Extract Test accuracy: 0.975
 
 ## Cell Images Dataset
 
+Image Size: 180x180
 ```text
 Epoch 30/30
 624/624 [==============================] - 16s 26ms/step - loss: 0.7086 - accuracy: 0.9828 - val_loss: 2.7155 - val_accuracy: 0.9637
@@ -117,4 +118,9 @@ Epoch 30/30
 ```text
 From Feature Extractor Cell Images Model Test accuracy: 0.965
 
+```
+
+Image Size: 64x64 ( much faster to process )
+```text
+From Feature Extractor Cell Images Model Test accuracy: 0.942
 ```
