@@ -124,3 +124,21 @@ Image Size: 64x64 ( much faster to process )
 ```text
 From Feature Extractor Cell Images Model Test accuracy: 0.942
 ```
+
+## Google Collab
+
+To run in Google Collab, we have to update the Tensorflow version.  In a cell run the following:
+
+```text
+!pip install --upgrade tensorflow
+```
+
+Make sure to update the cell_images.zip
+
+```text
+!unzip cell_images.zip
+```
+
+Copy and paste, `fast_feature_extraction_cell_images.py` into a cell, remove the main section.
+
+Create a new cell, and call `main()`

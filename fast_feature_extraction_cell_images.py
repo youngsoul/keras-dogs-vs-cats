@@ -7,6 +7,12 @@ from pathlib import Path
 import pandas as pd
 import numpy as np
 
+"""
+NOTE: To run on google collab, we have to upgrade Tensorflow.  In a cell type:
+
+!pip install --upgrade tensorflow
+
+"""
 image_height = 64
 image_width = 64
 epochs = 30
